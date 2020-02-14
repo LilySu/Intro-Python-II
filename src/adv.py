@@ -80,24 +80,24 @@ while True:
             player_location = direction[cmd]
         else:
             print('----------Bumped into wall. Please try another direction: n,s,e or w!----------')
-    # elif 'get' in cmd:
-    #     cmd_as_list = list(cmd.split(' '))
-    #     num_words = len(cmd_as_list)
-    #     if num_words > 1:
-    #         player_wants_to_get = cmd_as_list[1]
-    #         if player_wants_to_get in room_inventory:
-    #             new_item = Item(player_wants_to_get)# item gets passed in here
-    #             new_item_to_store = new_item.on_take()
+    elif 'get' in cmd:
+        cmd_as_list = list(cmd.split(' '))
+        num_words = len(cmd_as_list)
+        if num_words > 1:
+            player_wants_to_get = cmd_as_list[1]
+            if player_wants_to_get in room_inventory:
+                new_item = Item(player_wants_to_get)# item gets passed in here
+                new_item_to_store = new_item.on_take()
 
-    #             player_possesses = player_property.player_inventory()
-    #             print(f"Player already had {player_possesses} and now possess {player_property.player_added_to_inventory(new_item_to_store)}.")
-    #             room_inventory = player_location.remove_inventory(player_wants_to_get)
-    #             print(f"\n\n ~*~*~ Here are what is available in the room: {room_inventory} ~*~*~ ")
-    #         else:
-    #             print(f"{player_wants_to_get} is not in the room.")
-    #     else:
-    #         print('Please write get item, 2 words total.')
-    elif cmd == 'inventory':
+                player_possesses = player_property.player_inventory()
+                print(f"Player already had {player_possesses} and now possess {player_property.player_added_to_inventory(new_item_to_store)}.")
+                room_inventory = player_location.remove_inventory(player_wants_to_get)
+                print(f"\n\n ~*~*~ Here are what is available in the room: {room_inventory} ~*~*~ ")
+            else:
+                print(f"{player_wants_to_get} is not in the room.")
+        else:
+            print('Please write get item, 2 words total.')
+    elif cmd == 'i' or cmd == 'inventory':
         player_possesses = player_property.player_inventory()
         print(player_possesses)
     elif cmd == "q":
